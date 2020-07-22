@@ -16,11 +16,17 @@ export function ProportionalImage({
       style={{ paddingTop: `calc(100% * ${boxAspectRatio})` }}
     >
       <div className="foundation-ProportionalImage__inner">
-        <img
-          className="foundation-ProportionalImage__img"
-          {...imageProps}
-          loading="lazy"
-        />
+        <picture>
+          <source
+            srcSet={`/images?url=${encodeURIComponent(imageProps.src)}`}
+            type="image/webp"
+          />
+          <img
+            className="foundation-ProportionalImage__img"
+            {...imageProps}
+            loading="lazy"
+          />
+        </picture>
       </div>
     </div>
   );
